@@ -1,0 +1,65 @@
+/* Recognition CSS */
+.cam{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 17vh;
+    margin-top: 15px;
+}
+.sbtn{
+    margin-left: 35vh;
+}
+p{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+}
+.error {
+    margin: 0;
+    font-size: 16px;
+    line-height: 26px;
+    text-align: center;
+    color: red;
+  }
+  
+  .error--hidden {
+    display: none;
+  }
+.form{
+  border: 2px solid white;
+  border-radius: 15px;
+  box-shadow: 5px 5px #66fcf1;
+  width: 50%;
+  margin-left: 53vh;
+  margin-top: 43px;
+  padding: 5px;
+  /* color: white;s */
+  padding-bottom: 15px;
+}
+h1{
+  color: white;
+  margin-left: 60vh;
+  margin-top: 10px;
+}
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 10px solid #f3f3f3; /* Light grey */
+  border-top: 10px solid #383636; /* Black */
+  border-radius: 50%;
+  animation: spinner 1.5s linear infinite;
+}
+.spinner-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

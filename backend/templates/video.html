@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+    <body>
+        <div class="topnav">
+            <a class="active" href="#home">Face Meet</a>
+            <a href="http://localhost:3000/register">Host</a>
+            <a href="http://localhost:3000/recognition">Join</a>
+            <a href="#about">About</a>
+          </div>
+       
+        <br/>
+        
+        <form >
+            <label for="username">Your Name: </label>&nbsp;&nbsp;
+            <input class="inpform" type="text" name=”username” id="username">
+            &nbsp;&nbsp;&nbsp;
+            <label for="roomname">Room Name: </label>&nbsp;&nbsp;
+            <input class="inpform" type="text" name=”roomname” id="roomname">&nbsp;&nbsp;
+            <button id="join_leave">Join call</button>&nbsp;&nbsp;
+            <button id="share_screen" disabled>Share screen</button>&nbsp;&nbsp;
+            <button id="toggle_chat" disabled>Toggle chat</button>
+        </form>
+        <p id="count">Disconnected.</p>
+        <div id="root">
+            <div id="container" class="container">
+                <div id="local" class="participant"><div></div><div class="label">Me</div></div>
+                <!-- more participants will be added dynamically here -->
+            </div>
+            <div id="chat">
+                <div id="chat-scroll">
+                    <div id="chat-content">
+                        <!-- chat content will be added dynamically here -->
+                    </div>
+                </div>
+                <input id="chat-input" type="text">
+            </div>
+        </div>
+        <script src="https://media.twiliocdn.com/sdk/js/video/releases/2.3.0/twilio-video.min.js"></script>
+        <script src="https://media.twiliocdn.com/sdk/js/conversations/releases/1.0.0/twilio-conversations.min.js"></script>
+        <script src="{{ url_for('static', filename='main.js') }}"></script>
+    </body>
+</html>

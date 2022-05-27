@@ -1,0 +1,30 @@
+/* Navbar CSS */
+.web {
+  display: flex;
+  flex: 1;
+}
+.web-option {
+  margin-right: 80px;
+}
+.web-option a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+.option-icon {
+  display: flex;
+  align-items: center;
+  margin-right: 4px;
+}
+.icon {
+  color: #66fcf1;
+}
+.pc {
+  color: white;
+}
+a:hover {
+  color: #66fcf1;
+}
+.nav {
+  background-color: #0b0c10;
+}

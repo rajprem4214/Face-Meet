@@ -1,0 +1,155 @@
+@import url("https://fonts.googleapis.com/css2?family=Asap&family=Roboto:ital,wght@0,500;0,900;1,500&display=swap");
+html,
+body {
+  height: 100%;
+  display: flex;
+  font-family: "Asap", sans-serif;
+  flex-direction: column;
+}
+#root:not(.withChat) {
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin-top: 20px;
+}
+#root.withChat {
+  display: grid;
+  grid-template-columns: 75% 25%;
+  height: 100%;
+  margin-top: 20px;
+}
+h1 {
+  margin-left: 38vw;
+  color: black;
+  text-shadow: 0px 0px 5px #b393d3, 0px 0px 10px #b393d3, 0px 0px 10px #b393d3,
+    0px 0px 20px #b393d3;
+}
+.inpform {
+  width: 10%;
+  padding: 9px 18px;
+  margin: 0px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+form {
+  display: flex;
+  justify-content: center;
+  /* justify-content: space-evenly; */
+  align-items: center;
+}
+/* video section */
+
+#root {
+  border: 2px solid black;
+  border-radius: 10px;
+}
+
+.container {
+  width: calc(100% - 5px);
+  height: 100%;
+  padding-right: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+.participant {
+  margin-bottom: 10px;
+  margin-right: 5px;
+  display: grid;
+  grid-template-rows: auto 20px;
+}
+.participant div {
+  text-align: center;
+}
+.participant div video {
+  background-color: #eee;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+.participant div video:not(.trackZoomed) {
+  width: 240px;
+  height: 180px;
+}
+.participant .label {
+  background-color: #ddd;
+  padding: 2px;
+}
+.participantZoomed {
+  width: 100%;
+  height: calc(100% - 5px);
+  grid-template-rows: auto 30px;
+}
+.participantHidden {
+  display: none;
+}
+.trackZoomed {
+  width: 100%;
+  height: 100%;
+}
+.participantZoomed div video:not(.trackZoomed) {
+  display: none;
+}
+.participantHidden div video {
+  display: none;
+}
+.participantHidden .label {
+  display: none;
+}
+.participantZoomed .label {
+  margin-top: 8px;
+}
+
+/* chat section */
+
+#root.withChat #chat {
+  width: calc(100% - 10px);
+  display: grid;
+  grid-template-rows: auto 30px;
+  border-left: 1px solid black;
+  border-radius: 10px;
+  padding: 5px;
+}
+#root:not(withChat) #chat {
+  display: none;
+}
+#chat #chat-scroll {
+  overflow: auto;
+}
+#chat #chat-content {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  line-height: 1em;
+  max-height: 1px;
+}
+
+/* Add a black background color to the top navigation */
+.topnav {
+  background-color: #333;
+  overflow: hidden;
+  padding: 8px;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 10px 33px;
+  margin-bottom: 20px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #04aa6d;
+  color: white;
+}
