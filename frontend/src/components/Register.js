@@ -30,6 +30,7 @@ const Register = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [sucessMessage, setSucessMessage] = useState("");
   const [userimage, setUserimage] = useState(undefined);
+  const [loading, setLoading] = useState(false);
 
   //Handle Submit '/create' API Call
   const handleSubmit = (event) => {
@@ -52,6 +53,7 @@ const Register = () => {
       .then((res) => {
         setSucessMessage("yes");
         setErrorMessage(res.data);
+        setLoading(false);
       })
       .catch((err) => {
         setErrorMessage("Invalid Credentials !!! Please reload page!!");
@@ -135,9 +137,22 @@ const Register = () => {
                 onChange={handleImage}
               />
             </Form.Group>
-            <Button variant="primary" type="submit" onClick={notify}>
+
+            <Button
+              variant="primary"
+              type="submit"
+              onClick={() => {
+                notify();
+                setLoading(true);
+              }}
+            >
               Submit
             </Button>
+            {loading && (
+              <div className="spinner-container">
+                <div className="loading-spinner"></div>
+              </div>
+            )}
             {sucessMessage && errorMessage === "Uploaded" && (
               <Link to="/recognition">
                 <Button className="mx-3">Join Meet</Button>

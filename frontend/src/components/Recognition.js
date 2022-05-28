@@ -39,7 +39,7 @@ const WebcamCapture = () => {
       .then((res) => {
         console.log(`response = ${res.data}`);
         setName(res.data);
-        setLoading(true);
+        setLoading(false);
       })
       .catch((error) => {
         console.log(`error = ${error}`);
@@ -174,7 +174,7 @@ const WebcamCapture = () => {
                   className="mt-3"
                   style={{ color: "red", marginLeft: "15vw" }}
                 >
-                  Please Retry
+                  Face Mismatch
                 </h3>
               )}
 
