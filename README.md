@@ -200,16 +200,8 @@ TWILIO_API_KEY_SECRET=YPe9sOZP25xzUxnMd6xLXBKfigNmTJRC
 ### MongoDB Cloud Credentials:
 
 ```
-Email: 1nt20is121.prem@nmit.ac.in
-Password: Pr69M!1234
-
-Cluster Name: Engage
-Cluster Username: rajprem4214
-Cluster Password: 1234
-
 Database Name: images
 Collections Name: image
-
 ```
 
 
