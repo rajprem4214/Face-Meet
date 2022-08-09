@@ -1,12 +1,13 @@
 
 # Face Meet 
 
-Are you getting annoyed by anonymous interrupts in your video meeting or need a security system that allows actual person in your meet? 
+Are anonymous interruptions in your video meeting driving you crazy? Do you need a security solution that lets real people attend your meeting?
 
-Don't worry we got your back. Here, we introduce **Face Meet**.  
+Do not worry; we have you covered. We now present **Face Meet**.  
  
-**Face Meet** is next gen video calling app which comes with 2FA (Two Factor Authentication)
-which consists of **Email Password Verification** and **Face Recogniton** technology. It allows only registered peeps to join meet after successful image verification.
+A GenZ video calling app called **Face Meet**** provides 2FA (Two Factor Authentication), which consists of **face recognition** and **email password verification** technology. Only those who have registered are allowed to join meetings after a successful image verification.
+
+Therefore, before setting up a meet, a user must register on our site with an email address, a password, and a photo. Users who want to attend the meeting must complete the registration process as well. To ensure that a real individual really attended the meet, a face verification is done after registration.
 
 Build with help of **Face Recognition Library** in Python, it gives an accuracy of **99.38%.**  
 
@@ -98,6 +99,10 @@ Insert gif or link to demo
 3. Install Pip (Package Manager)
 [ https://pip.pypa.io/en/stable/installing/ ]
 
+4. Install MongoDB Compass and connect it to localhost **27017** [ Atlas Connection is quite slow and may not work everytime ]
+- Uncomment the following code in app.py to change the connection as per requirement.
+
+  <img src="https://user-images.githubusercontent.com/85401522/183743315-a766d3a9-f7ff-4797-a162-68849f134134.png" alt="Faa" border="0" width=400>
 
 
 
