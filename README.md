@@ -229,7 +229,7 @@ Collections Name: image
 
 ## Documentation
 
-[PPT Documentation](https://1drv.ms/p/s!AhTIcIxUOCw5gyXOWfkauH9saktA?e=l3WFHf)
+[PPT Documentation](https://1drv.ms/p/s!AhTIcIxUOCw5gyXOWfkauH9saktA?e=gUVzT3)
 
 <img src="https://i.ibb.co/1z41N4b/regppt.png" alt="regppt" border="0">
 
