@@ -42,7 +42,7 @@ CORS(app)
 
 # Database Connection
 # MongoDB Cloud Connection
-# connection = MongoClient("localhost", 27017) # MongoDB Local Database Connection
+connection = MongoClient("localhost", 27017) # MongoDB Local Database Connection
 database = connection['images']
 collec = database['image']
 fs = gridfs.GridFS(database)
