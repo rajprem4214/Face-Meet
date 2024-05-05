@@ -175,5 +175,16 @@ def api():
     return resp
 
 
+@app.route("/meetings", methods=["GET"])
+def list_meetings():
+    try:
+        meetings = list(
+            collec.find({}, {"_id": 0, "roomname": 1, "username": 1, "email": 1})
+        )  # Fetch only the room names, exclude MongoDB _id
+        return jsonify({"meetings": meetings}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
 if __name__ == '__main__':
     app.run(debug=False, host='127.0.0.1', port=5000)

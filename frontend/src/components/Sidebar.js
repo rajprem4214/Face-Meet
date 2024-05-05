@@ -33,8 +33,8 @@ const Sidebar = () => {
             <span class="font-bold text-2xl">Face Meet</span>
           </div>
 
-          <ul className="mt-6 space-y-3">
-            <li>
+          <ul className="mt-6 space-y-5">
+            <li className="">
               <Link to={"/"}
                 onClick={() => setActiveMenu("dashboard")}
                 className={`block rounded-lg ${activeMenu === "dashboard" ? 'bg-[#0E78F9]' : ''} px-4 py-2 text-md font-medium text-white`}>
@@ -72,8 +72,8 @@ const Sidebar = () => {
             </li>
 
             <li>
-              <a
-                href="#"
+              <Link
+                to={"/meetings"}
                 onClick={() => setActiveMenu("meetings")}
                 className={`block rounded-lg ${activeMenu === "meetings" ? 'bg-[#0E78F9]' : ''} hover:bg-[#0E78F9] px-4 py-2 text-md font-medium text-white`}
               >
@@ -81,19 +81,19 @@ const Sidebar = () => {
                   <Users />
                   Meetings
                 </span>
-              </a>
+              </Link>
             </li>
 
             <li>
-              <a
-                href="#"
+              <Link
+                to={"/accounts"}
                 onClick={() => setActiveMenu("account")}
                 className={`block rounded-lg ${activeMenu === "account" ? 'bg-[#0E78F9]' : ''} hover:bg-[#0E78F9] px-4 py-2 text-md font-medium text-white`}
               >
                 <span className="flex gap-2">
                   <CircleUserRound /> Account
                 </span>
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
