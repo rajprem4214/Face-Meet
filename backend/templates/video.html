@@ -1,45 +1,131 @@
 <!doctype html>
 <html>
-    <head>
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
-    </head>
-    <body>
-        <div class="topnav">
-            <a class="active" href="#home">Face Meet</a>
-            <a href="http://localhost:3000/register">Host</a>
-            <a href="http://localhost:3000/recognition">Join</a>
-            <a href="#about">About</a>
-          </div>
-       
-        <br/>
-        
-        <form >
-            <label for="username">Your Name: </label>&nbsp;&nbsp;
-            <input class="inpform" type="text" name=”username” id="username">
-            &nbsp;&nbsp;&nbsp;
-            <label for="roomname">Room Name: </label>&nbsp;&nbsp;
-            <input class="inpform" type="text" name=”roomname” id="roomname">&nbsp;&nbsp;
-            <button id="join_leave">Join call</button>&nbsp;&nbsp;
-            <button id="share_screen" disabled>Share screen</button>&nbsp;&nbsp;
-            <button id="toggle_chat" disabled>Toggle chat</button>
-        </form>
-        <p id="count">Disconnected.</p>
-        <div id="root">
-            <div id="container" class="container">
-                <div id="local" class="participant"><div></div><div class="label">Me</div></div>
-                <!-- more participants will be added dynamically here -->
-            </div>
-            <div id="chat">
-                <div id="chat-scroll">
-                    <div id="chat-content">
-                        <!-- chat content will be added dynamically here -->
-                    </div>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+
+    <div class="flex bg-[#1c1f2e]">
+
+        <div class="flex h-screen flex-col justify-between bg-[#1c1f2e] w-[250px] text-white">
+            <div class="px-4 py-6">
+                <div class="flex items-center gap-x-2">
+                    <img src="/static/assets/logo.svg" alt="logo" height={50} width={50} />
+                    <span class="font-bold text-2xl">Face Meet</span>
                 </div>
-                <input id="chat-input" type="text" placeholder="Chat Here ...">
+
+                <ul class="mt-6 space-y-1">
+                    <li>
+                        <a href="http://localhost:3000/"
+                            class="block rounded-lg px-4 py-2 text-md font-medium hover:bg-[#0f78f8] text-white">
+                            <span class="flex gap-2">
+                                <i data-lucide="layout-dashboard"></i>
+                                Dashboard
+                            </span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="http://localhost:3000/register"
+                            class="block rounded-lg px-4 py-2 text-md font-medium hover:bg-[#0f78f8] text-white">
+                            <span class="flex gap-2">
+                                <i data-lucide="video"></i>
+                                Host a Meeting
+                            </span>
+
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="http://localhost:3000/joining"
+                            class="block rounded-lg px-4 py-2 text-md font-medium hover:bg-[#0f78f8] text-white">
+                            <span class="flex gap-2">
+                                <i data-lucide="square-plus"></i>
+                                Join a Meeting
+                            </span>
+
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="block rounded-lg px-4 py-2 text-md font-medium hover:bg-[#0f78f8]text-white">
+                            <span class="flex gap-2">
+                                <i data-lucide="users"></i>
+                                Meetings
+                            </span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#"
+                            class="block rounded-lg px-4 py-2 text-md font-medium hover:bg-[#0f78f8] text-white">
+                            <span class="flex gap-2">
+                                <i data-lucide="circle-user-round"></i>
+                                Account
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="overflow-auto p-4 mt-16 h-[calc(100vh-64px)] bg-[#161825] overflow-y-auto w-[calc(100vw-290px)]">
+
+            <h1 class="text-2xl font-bold text-[#0f78f8] sm:text-3xl flex items-center justify-center">
+                Meeting Room
+            </h1>
+
+            <div class="mt-2 flex items-start justify-center">
+                <form class="rounded-lg bg-[#1c1f2e] shadow-lg p-4 flex items-center justify-center">
+                    <label for="username" class="text-white">Your Name: </label>&nbsp;&nbsp;
+                    <input
+                        class="w-auto bg-[#252a40] placeholder-[#848b99] text-white rounded-lg border-gray-200 p-3 text-md"
+                        type="text" name=”username” id="username">
+                    &nbsp;&nbsp;&nbsp;
+                    <label for="roomname" class="text-white">Room Name: </label>&nbsp;&nbsp;
+                    <input
+                        class="w-auto bg-[#252a40] placeholder-[#848b99] text-white rounded-lg border-gray-200 p-3 text-md"
+                        type="text" name=”roomname” id="roomname">&nbsp;&nbsp;
+                    <button id="join_leave" class="text-white bg-[#0f78f8] p-2 rounded-lg">Join call</button>&nbsp;&nbsp;
+                    <button id="share_screen" class="text-white bg-[#0f78f8] p-2 rounded-lg" disabled>Share screen</button>&nbsp;&nbsp;
+                    <button id="toggle_chat" class="text-white bg-[#0f78f8] p-2 rounded-lg" disabled>Toggle chat</button>
+                </form>
+            </div>
+
+
+            <p id="count" class="mt-3 bg-[#252a40] text-white rounded-lg shadow-lg p-2 flex w-[30%]">Disconnected.</p>
+
+
+            <div id="root" class="bg-[#252a40]">
+                <div id="container" class="container">
+                    <div id="local" class="participant">
+                        <div></div>
+                        <div class="label">Me</div>
+                    </div>
+                    <!-- more participants will be added dynamically here -->
+                </div>
+                <div id="chat">
+                    <div id="chat-scroll">
+                        <div id="chat-content">
+                            <!-- chat content will be added dynamically here -->
+                        </div>
+                    </div>
+                    <input id="chat-input" class="bg-[#252a40] placeholder-[#848b99] text-white rounded-lg border-gray-200 p-3 text-md" type="text" placeholder="Chat Here ...">
+                </div>
             </div>
         </div>
-        <script src="https://media.twiliocdn.com/sdk/js/video/releases/2.3.0/twilio-video.min.js"></script>
-        <script src="https://media.twiliocdn.com/sdk/js/conversations/releases/1.0.0/twilio-conversations.min.js"></script>
-        <script src="{{ url_for('static', filename='main.js') }}"></script>
-    </body>
+    </div>
+
+    <script src="https://media.twiliocdn.com/sdk/js/video/releases/2.3.0/twilio-video.min.js"></script>
+    <script src="https://media.twiliocdn.com/sdk/js/conversations/releases/1.0.0/twilio-conversations.min.js"></script>
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
 </html>

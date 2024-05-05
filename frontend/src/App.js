@@ -3,6 +3,7 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Register from "./components/Register";
 import Dashboard from "./components/Dashboard";
+import Joining from "./components/Joining";
 
 function App() {
   return (
@@ -11,9 +12,10 @@ function App() {
         {/* Dashboard Page */}
         <Route path="/" element={<Dashboard />} />
         {/* Login Page */}
-        <Route path="/recognition" element={<Recognition />} />
+        <Route path="/joining" element={<Joining />} />
         {/* Register Page */}
         <Route path="/register" element={<Register />} />
+
       </Routes>
     </div>
   );

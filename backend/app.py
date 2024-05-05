@@ -33,6 +33,7 @@ twilio_api_key_sid = os.environ.get('TWILIO_API_KEY_SID')
 twilio_api_key_secret = os.environ.get('TWILIO_API_KEY_SECRET')
 twilio_client = Client(twilio_api_key_sid, twilio_api_key_secret,
                        twilio_account_sid)
+print(twilio_client)
 
 # Flask Initialisation
 app = Flask(__name__)
@@ -94,30 +95,26 @@ def create():
         'roomname': roomname
     }
     if database.image.find_one({"username": query['username'], "email": query['email'], "password": query['password'], "roomname": query['roomname']}):
-        return 'Already registered!'
+        return jsonify({'result': 'Already registered!'}), 201
     status = collec.insert_one(query)
     if(status):
-        return 'Uploaded'
+        return jsonify({'result': 'Registered Successfully'}), 200
     return jsonify({'result': 'Error occured '}), 500
 
 
 # Login Route
 @app.route("/login", methods=['POST'])
 def login():
-    if not request.form.get('username') or not request.form.get('email') or not request.form.get('password') or not request.form.get('roomname'):
-        return 'Data Cannot Be Empty'
     user = database.image.find_one({
-        "username": request.form.get('username'),
         "email": request.form.get('email'),
         "password": request.form.get('password'),
         "roomname": request.form.get('roomname')
     })
     global image_id
-    if user and request.form.get('password') == user['password'] and request.form.get('roomname') == user['roomname']:
-        res = 'Match Found!! Please Proceed with facial recognition'
+    if user and request.form.get('email') == user['email'] and request.form.get('password') == user['password'] and request.form.get('roomname') == user['roomname']:
         image_id = user['image_id']
-        return res
-    return 'You are not registered for this event'
+        return jsonify({"result": "Logged In Sucessfully"}), 200
+    return jsonify({"result": "Error in Logging in"}), 500
 
 
 # Join Room API Call
@@ -171,9 +168,9 @@ def api():
                 im.save(directory+'/stranger.jpeg')
                 load_user.save(user_dir+'/known.jpeg')
                 if recognize_faces() == 'Matched':
-                    resp = 'Matched'
+                    resp = 'Matched', 200
                 else:
-                    resp = 'Mismatch'
+                    resp = 'Mismatch', 400
             except:
                 pass
     return resp
